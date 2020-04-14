@@ -24,12 +24,14 @@
       return actions.payment.create({
 
           //added by me
-          redirect_urls{
+          redirect_urls:{
             return_url :'http://localhost:8000/execute-payment'
           },
+
+
         transactions: [{
           amount: {
-            total: '30',
+            total: '20',
             currency: 'USD'
           }
         }]
@@ -37,13 +39,12 @@
     },
     // Execute the payment
     onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
+      // return actions.payment.execute().then(function() {
         // // Show a confirmation message to the buyer
         // window.alert('Thank you for your purchase!');
 
         return actions.redirect();
-      });
-    }
+      }
   }, '#paypal-button');
 
 </script>
