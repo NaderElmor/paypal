@@ -1,8 +1,6 @@
 <?php
 namespace App\Paypal;
 use PayPal\Api\Payer;
-use PayPal\Api\Amount;
-use PayPal\Api\Details;
 use PayPal\Api\Payment;
 use PayPal\Api\Transaction;
 use PayPal\Api\Item;
@@ -48,36 +46,10 @@ class CreatePayment extends PayPal{
         return $payer;
     }
 
-    /**
-     * @return Details
-     */
-    protected function Details(): Details
-    {
-        $details = new Details();
-        $details->setShipping(1.2)
-            ->setTax(1.3)
-            ->setSubtotal(17.50);
-        return $details;
-    }
 
-    /**
-     * @param $details
-     * @return Amount
-     */
-    protected function Amount($details): Amount
-    {
-        $amount = new Amount();
-        $amount->setCurrency("USD")
-            ->setTotal(20)
-            ->setDetails($details);
-        return $amount;
-    }
 
-    /**
-     * @param $amount
-     * @param $itemList
-     * @return Transaction
-     */
+
+ 
     protected function Transaction($amount, $itemList): Transaction
     {
         $transaction = new Transaction();
@@ -88,9 +60,6 @@ class CreatePayment extends PayPal{
         return $transaction;
     }
 
-    /**
-     * @return RedirectUrls
-     */
     protected function RedirectUrls(): RedirectUrls
     {
         $redirectUrls = new RedirectUrls();
@@ -99,12 +68,7 @@ class CreatePayment extends PayPal{
         return $redirectUrls;
     }
 
-    /**
-     * @param $payer
-     * @param $redirectUrls
-     * @param $transaction
-     * @return Payment
-     */
+  
     protected function Payment($payer, $redirectUrls, $transaction): Payment
     {
         $payment = new Payment();
