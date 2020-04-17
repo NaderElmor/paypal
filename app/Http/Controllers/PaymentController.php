@@ -1,15 +1,40 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Paypal\CreatePayment;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
-
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use PayPal\Api\Payer;
+use PayPal\Api\RedirectUrls;
 
 class PaymentController extends Controller
 {
+
+    public function create()
+    {
+        $createPayment = new CreatePayment;
+        return $createPayment->create();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function execute()
     {
         //info
